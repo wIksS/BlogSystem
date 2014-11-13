@@ -1,0 +1,14 @@
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\BlogSystem.Models.dll.config
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\BlogSystem.Models.dll
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\BlogSystem.Models.pdb
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\EntityFramework.dll
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\EntityFramework.xml
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\obj\Debug\BlogSystem.Models.csprojResolveAssemblyReference.cache
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\obj\Debug\BlogSystem.Models.dll
+C:\Users\Tdd\Desktop\BlogSystem\BlogSystem\BlogSystem.Models\obj\Debug\BlogSystem.Models.pdb

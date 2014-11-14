@@ -9,29 +9,89 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+    <div id="wrapper">
+        <header></header>
+        <div class="row">
+            <div class="red col-md-offset-1 col-md-10 row">
+                <aside class="col-md-4" id="sidebar">
+                    <!-- begin widgetized sidebar 1 -->
+                    <ul>
+                        <li id="categories-3" class="widget widget_categories">
+                            <h2 class="widgettitle">Categories</h2>		<ul>
+                                <li class="cat-item cat-item-122927714">
+                                    <a href="http://viktordakov.wordpress.com/category/c-part-1/" sl-processed="1">C# part 1</a>
+                                </li>
+                                <li class="cat-item cat-item-1">
+                                    <a href="http://viktordakov.wordpress.com/category/uncategorized/" sl-processed="1">Uncategorized</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="recent-posts-4" class="widget widget_recent_entries">
+                            <h2 class="widgettitle">Recent Posts</h2>		<ul>
+                                <li>
+                                    <a href="http://viktordakov.wordpress.com/2014/05/20/falling-rocks-game-2/" sl-processed="1">Falling Rocks Game</a>
+                                </li>
+                                <li>
+                                    <a href="http://viktordakov.wordpress.com/2014/05/20/responsive-online-cv-2/" sl-processed="1">Responsive Online CV</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="linkcat-5828" class="widget widget_links">
+                            <h2 class="widgettitle">Линкове</h2>
+                            <ul class="xoxo blogroll">
+                                <li><a href="https://www.facebook.com/profile.php?id=100001212613023&amp;ref=tn_tnmn" title="This will take you to my facebook profile" target="_blank" sl-processed="1">Facebook профил</a></li>
+                                <li><a href="https://github.com/wIksS/Telerik" title="This will take you to my GitHub profile" target="_blank" sl-processed="1">GitHub профил</a></li>
+                                <li><a href="http://telerikacademy.com/Users/tddhome" title="This will take you to my telerikprofile" target="_blank" sl-processed="1">Telerik Academy профил</a></li>
+                                <li><a href="http://www.okinawasuibukan.com/" title="This will take you to the site of okinava karate" target="_blank" sl-processed="1">Окинава карате</a></li>
+
+                            </ul>
+                        </li>
+                        <li id="search-3" class="widget widget_search">
+                            <h2 class="widgettitle">search site:</h2><div class="search-box">
+                                <form method="get" action="http://viktordakov.wordpress.com/">
+                                    <input type="text" size="15" class="search-field" name="s" id="s" value="search this site" onfocus="if(this.value == 'search this site') {this.value = '';}" onblur="if (this.value == '') {this.value = 'search this site';}"><input type="submit" value="" class="search-go">
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- end widgetized sidebar 1 -->
+                </aside>
+                <div class="col-md-8" id="content-wrapper">
+                    pesho
+                </div>
             </div>
         </div>
+        <div id="section-wrapper">
+            <section>
+                <div>
+
+                </div>
+            </section>
+        </div>
     </div>
-    <div id="wrapper">
-        s
-    </div>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div id="wrapper">
+            s
+        </div>*@
     <div class="container body-content">
         @RenderBody()
         <footer class="navbar-fixed-bottom">

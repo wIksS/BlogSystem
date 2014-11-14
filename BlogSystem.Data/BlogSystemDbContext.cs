@@ -24,6 +24,8 @@ namespace BlogSystem.Data
 
         public IDbSet<Page> Pages { get; set; }
 
+        public System.Data.Entity.DbSet<BlogSystem.Models.BlogPost> BlogPosts { get; set; }
+
        // public IDbSet<ApplicationUser> Users { get; set; }
     }
 }

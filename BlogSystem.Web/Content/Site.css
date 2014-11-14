@@ -1,15 +1,110 @@
-﻿html {
-    /*background: #bcc5c1;*/
+﻿html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
 }
 
 body {
-    /*background: url(images/background.jpg) top center no-repeat;*/
-    padding-top:100px;
+    font-size: 62.5%;
+    font-family: Tahoma, Verdana, Arial, Sans-Serif;
+    background: #bcc5c1;
+    color: #333;
+    text-align: center;
+    margin: 0 0 20px 0;
+    padding: 0;
+    padding: 0px 25px;
+    background: #bcc5c1;
+}
+
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-11, .col-md-12 {
+    margin-left: -15px;
+    margin-right: -15px;
 }
 
 #wrapper {
+    min-height: 1000px;
+    background: url(images/background.jpg) top center no-repeat;
+    background-size: cover;
 }
 
+header {
+    height: 260px;
+}
+
+#section-wrapper {
+}
+
+.red {
+    background: url(images/section-background.jpg)repeat-y;
+    background-size: 100% 100%;
+    /*padding-right: 7%;*/
+}
+
+#sidebar {
+    font: 1.1em Tahoma, Arial, Sans-Serif;
+    color: #fff;
+    text-align: left;
+}
+
+    #sidebar a {
+        color: white;
+    }
+
+#sidebar {
+    background: url(images/sidebar-background.jpg)no-repeat 0 0;
+    height: 500px;
+    padding: 75px 0 10px 28px;
+    background-size: 100% 100%;
+}
+
+    #sidebar ul li {
+        list-style-type: none;
+        list-style-image: none;
+        margin-bottom: 18px;
+    }
+
+    #sidebar h2 {
+        margin: 5px 0 0;
+        width: 100%;
+        line-height: 32px;
+        font-size: 12px;
+        text-transform: uppercase;
+        padding: 2px 0 0 47px;
+        background: url(images/sidebar-category.jpg) top left no-repeat;
+        color: #eef0eb;
+        font-family: Tahoma, Verdana, Sans-Serif;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    #sidebar ul ol, #sidebar ul ul {
+        margin: 5px 0 0 20px;
+    }
+
+    #sidebar ul, #sidebar ul ol {
+        margin: 0;
+        padding: 0;
+    }
+
+        #sidebar ul li ul li, #sidebar ul li ol li {
+            background: url(images/sidebar-bullet.jpg) top left no-repeat;
+            padding: 0 0 0 20px;
+            margin: 5px 20px 10px 0;
+        }
+
+#content-wrapper {
+    background: url(images/content-background.jpg) top center no-repeat;
+    height: 500px;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

@@ -37,7 +37,7 @@ body {
 }
 
 header {
-    height: 260px;
+    height: 50vh;
 }
 
 #section-wrapper {
@@ -49,7 +49,13 @@ header {
     /*padding-right: 7%;*/
 }
 
+
+
 #sidebar {
+    background: url(images/sidebar-background.jpg)no-repeat 0 0;
+    height: 500px;
+    padding: 75px 0 10px 28px;
+    background-size: 100% 100%;
     font: 1.1em Tahoma, Arial, Sans-Serif;
     color: #fff;
     text-align: left;
@@ -58,13 +64,6 @@ header {
     #sidebar a {
         color: white;
     }
-
-#sidebar {
-    background: url(images/sidebar-background.jpg)no-repeat 0 0;
-    height: 500px;
-    padding: 75px 0 10px 28px;
-    background-size: 100% 100%;
-}
 
     #sidebar ul li {
         list-style-type: none;
@@ -80,6 +79,7 @@ header {
         text-transform: uppercase;
         padding: 2px 0 0 47px;
         background: url(images/sidebar-category.jpg) top left no-repeat;
+        background-size: 100%;
         color: #eef0eb;
         font-family: Tahoma, Verdana, Sans-Serif;
         font-size: 1.2em;
@@ -104,6 +104,8 @@ header {
 #content-wrapper {
     background: url(images/content-background.jpg) top center no-repeat;
     height: 500px;
+    background-size: 100% 100%;
+    width:56vw;
 }
 /* Set padding to keep content from hitting the edges */
 .body-content {

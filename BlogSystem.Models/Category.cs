@@ -11,14 +11,14 @@ namespace BlogSystem.Models
 
         public Category()
         {
-            this.Posts = new HashSet<BlogPost>();
+            this.BlogPosts = new HashSet<BlogPost>();
         }
 
         public int Id { get; set; }
 
         public string Title { get; set; }
 
-        public ICollection<BlogPost> Posts
+        public ICollection<BlogPost> BlogPosts
         {
             get { return this.posts; }
             set { this.posts = value; }

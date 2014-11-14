@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlogSystem.Web.Infrastructure.Mapping;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,9 @@ namespace BlogSystem.Web
     {
         protected void Application_Start()
         {
+            var autoMapperConfig = new AutoMapperConfig();
+            autoMapperConfig.Execute();
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

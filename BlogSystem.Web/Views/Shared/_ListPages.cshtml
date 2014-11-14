@@ -1,0 +1,12 @@
+﻿@model IEnumerable<BlogSystem.Web.ViewModels.NavigationElement>
+
+@foreach (var page in Model)
+{
+    <li class="col-md-2 page">
+        <a href="/Page/@ViewBag.User/@page.Title">
+            @page.Title
+        </a>
+    </li>
+}
+
+

@@ -182,11 +182,16 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Areas\Administration\Controllers\BlogPostsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Administration\Controllers\PagesController.cs" />
     <Compile Include="Areas\Administration\ViewModels\PageViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +203,9 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\NavigationElement.cs" />
+    <Compile Include="ViewModels\Page\PageViewModel.cs" />
+    <Compile Include="ViewModels\Post\BlogPostViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -221,6 +229,11 @@
     <Content Include="Areas\Administration\Views\BlogPosts\Details.cshtml" />
     <Content Include="Areas\Administration\Views\BlogPosts\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\BlogPosts\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -271,10 +284,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_ListSidebar.cshtml" />
+    <Content Include="Views\Shared\_ListPages.cshtml" />
+    <Content Include="Views\Pages\Index.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\Sidebar\" />
+    <Folder Include="Views\Categories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

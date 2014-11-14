@@ -36,11 +36,36 @@ body {
     background-size: cover;
 }
 
-header {
-    height: 50vh;
+#administration-wrapper {
+    padding: 100px;
 }
 
-#section-wrapper {
+header {
+    height: 40vh;
+}
+
+    header ul {
+        list-style: none;
+        margin: 0;
+    }
+
+    header a {
+        color: #fff;
+        display: block;
+        font-weight: bold;
+        margin: 6px 15px 0 10px;
+        padding: 5px 10px 5px 10px;
+        font-size: 1.2em;
+        text-decoration: none;
+    }
+
+        header a.selected {
+            font-size: 1.8em;
+        }
+
+#content-wrapper {
+    text-align:left;
+    padding:30px 34px;
 }
 
 .red {
@@ -48,8 +73,6 @@ header {
     background-size: 100% 100%;
     /*padding-right: 7%;*/
 }
-
-
 
 #sidebar {
     background: url(images/sidebar-background.jpg)no-repeat 0 0;
@@ -105,7 +128,7 @@ header {
     background: url(images/content-background.jpg) top center no-repeat;
     height: 500px;
     background-size: 100% 100%;
-    width:56vw;
+    width: 56vw;
 }
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -125,4 +148,54 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+
+.posttitle {
+    width: 537px;
+    float: left;
+    margin-top: 20px;
+    padding: 0 0 18px 43px;
+    background: url(images/arrow.gif) top left no-repeat;
+}
+
+h2.pagetitle {
+    margin-top: 0px;
+    width: 512px;
+}
+
+h2, h2 a, h2 a:visited, h3, h3 a, h3 a:visited {
+    font-family: impact, Verdana, Arial, Sans-Serif;
+    color: #cc0000;
+    text-decoration: none;
+}
+
+    h2, h2 a, h2 a:visited, h3, h3 a, h3 a:visited {
+        font-family: impact, Verdana, Arial, Sans-Serif;
+        color: #cc0000;
+        text-decoration: none;
+    }
+
+a {
+    color: #cc0000;
+    text-decoration: none;
+}
+
+small a {
+    color: #747775;
+    font-weight: bold;
+}
+
+h2, h2 a, h2 a:visited, h3, h3 a, h3 a:visited {
+    font-family: impact, Verdana, Arial, Sans-Serif;
+    color: #cc0000;
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 2.8em;
+    font-family: impact;
+    font-weight: normal;
+    padding-bottom: 9px;
 }

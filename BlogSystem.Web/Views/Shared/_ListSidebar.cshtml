@@ -1,0 +1,14 @@
+﻿@model IEnumerable<BlogSystem.Web.ViewModels.NavigationElement>
+<li class="widget row widget_categories">
+    <div class="col-md-10">
+        <h2 class="widgettitle">@ViewBag.Title</h2>
+        <ul>
+            @foreach (var element in Model)
+            {
+                <li class="cat-item cat-item-122927714">
+                    <a href="/@ViewBag.User/@element.Title">@element.Title</a>
+                </li>
+            }
+        </ul>
+    </div>
+</li>

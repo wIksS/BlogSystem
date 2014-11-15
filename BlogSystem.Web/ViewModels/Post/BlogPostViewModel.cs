@@ -19,7 +19,8 @@ namespace BlogSystem.Web.ViewModels.Post
 
         public void CreateMappings(AutoMapper.IConfiguration configuration)
         {
-
+            configuration.CreateMap<BlogPost,BlogPostViewModel>()
+                .ForMember(p => p.CategoryName, opt => opt.MapFrom(b => b.Category.Title));
         }
     }
 }

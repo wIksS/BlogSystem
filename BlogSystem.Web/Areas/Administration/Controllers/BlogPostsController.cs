@@ -11,15 +11,17 @@ using BlogSystem.Models;
 
 namespace BlogSystem.Web.Areas.Administration.Controllers
 {
-    public class BlogPostsController : Controller
+    public class BlogPostsController : AdministrationController
     {
-        private BlogSystemDbContext db = new BlogSystemDbContext();
+        public BlogPostsController(IBlogSystemData data)
+            :base(data)
+        { }
 
         // GET: Administration/BlogPosts
         public ActionResult Index()
         {
-            var blogPosts = db.BlogPosts.Include(b => b.Category);
-            return View(blogPosts.ToList());
+            var blogPosts = Data.Posts.All().ToList();
+            return View(blogPosts);
         }
 
         // GET: Administration/BlogPosts/Details/5
@@ -29,7 +31,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.BlogPosts.Find(id);
+            BlogPost blogPost = Data.Posts.Find(id);
             if (blogPost == null)
             {
                 return HttpNotFound();
@@ -40,7 +42,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         // GET: Administration/BlogPosts/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Title");
+            ViewBag.CategoryId = new SelectList(Data.Categories.All(), "Id", "Title");
             return View();
         }
 
@@ -53,12 +55,14 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.BlogPosts.Add(blogPost);
-                db.SaveChanges();
+                blogPost.DateCreated = DateTime.Now;
+                blogPost.ApplicationUser = Data.Users.All().First(u => u.UserName == User.Identity.Name);
+                Data.Posts.Add(blogPost);
+                Data.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Title", blogPost.CategoryId);
+            ViewBag.CategoryId = new SelectList(Data.Categories.All(), "Id", "Title", blogPost.CategoryId);
             return View(blogPost);
         }
 
@@ -69,12 +73,12 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.BlogPosts.Find(id);
+            BlogPost blogPost = Data.Posts.Find(id);
             if (blogPost == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Title", blogPost.CategoryId);
+            ViewBag.CategoryId = new SelectList(Data.Categories.All(), "Id", "Title", blogPost.CategoryId);
             return View(blogPost);
         }
 
@@ -87,11 +91,10 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(blogPost).State = EntityState.Modified;
-                db.SaveChanges();
+                Data.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Title", blogPost.CategoryId);
+            ViewBag.CategoryId = new SelectList(Data.Categories.All(), "Id", "Title", blogPost.CategoryId);
             return View(blogPost);
         }
 
@@ -102,7 +105,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.BlogPosts.Find(id);
+            BlogPost blogPost = Data.Posts.Find(id);
             if (blogPost == null)
             {
                 return HttpNotFound();
@@ -115,19 +118,10 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            BlogPost blogPost = db.BlogPosts.Find(id);
-            db.BlogPosts.Remove(blogPost);
-            db.SaveChanges();
+            BlogPost blogPost = Data.Posts.Find(id);
+            Data.Posts.Delete(blogPost);
+            Data.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

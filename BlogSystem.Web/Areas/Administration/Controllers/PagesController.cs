@@ -50,10 +50,12 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "Id,Title,Content")] Page page)
         {
             if (ModelState.IsValid)
             {
+                page.ApplicationUser = Data.Users.All().First(u => u.UserName == User.Identity.Name);
                 Data.Pages.Add(page);
                 Data.SaveChanges();
                 return RedirectToAction("Index");

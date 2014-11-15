@@ -18,9 +18,12 @@ namespace BlogSystem.Web.Controllers
         { }
 
         // GET: Pages
-        public ActionResult Index(string pageTitle)
+        public ActionResult Index(string pageTitle, string user)
         {
-            var page = this.Data.Pages.All().FirstOrDefault(p => p.Title == pageTitle);
+            var page = this.Data.Pages.All()
+                            .Where(p => p.ApplicationUser.UserName == user)
+                            .FirstOrDefault(p => p.Title == pageTitle);
+
             if(page != null)
             {
                 var pageViewModel = Mapper.Map<PageViewModel>(page);
@@ -32,7 +35,9 @@ namespace BlogSystem.Web.Controllers
 
         public ActionResult ListPages(string user)
         {
-            var pages = this.Data.Pages.All().Project().To<NavigationElement>().ToList();
+            var pages = this.Data.Pages.All()
+                .Where(p => p.ApplicationUser.UserName == user)
+                .Project().To<NavigationElement>().ToList();
             ViewBag.User = user;
 
             return PartialView("_ListPages", pages);

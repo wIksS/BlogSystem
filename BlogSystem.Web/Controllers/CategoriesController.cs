@@ -24,7 +24,9 @@ namespace BlogSystem.Web.Controllers
 
         public ActionResult ListCategories(string user)
         {
-            var categories = this.Data.Categories.All().Project().To<NavigationElement>().ToList();
+            var categories = this.Data.Categories.All()
+                .Where(p => p.ApplicationUser.UserName == user)
+                .Project().To<NavigationElement>().ToList();
             ViewBag.Title = "Categories";
             ViewBag.User = user;
             return PartialView("_ListSidebar",categories);

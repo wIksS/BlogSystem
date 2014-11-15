@@ -11,14 +11,15 @@ using BlogSystem.Models;
 
 namespace BlogSystem.Web.Areas.Administration.Controllers
 {
-    public class CategoriesController : Controller
+    public class CategoriesController : AdministrationController
     {
-        private BlogSystemDbContext db = new BlogSystemDbContext();
-
+        public CategoriesController(IBlogSystemData data)
+            :base(data)
+        { }
         // GET: Administration/Categories
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            return View(Data.Categories.All().ToList());
         }
 
         // GET: Administration/Categories/Details/5
@@ -28,7 +29,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
+            Category category = Data.Categories.Find(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -51,8 +52,9 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
-                db.SaveChanges();
+                category.ApplicationUser = Data.Users.All().First(u => u.UserName == User.Identity.Name);
+                Data.Categories.Add(category);
+                Data.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +68,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
+            Category category = Data.Categories.Find(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -83,8 +85,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
-                db.SaveChanges();
+                Data.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -97,7 +98,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
+            Category category = Data.Categories.Find(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -110,19 +111,10 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
-            db.SaveChanges();
+            Category category = Data.Categories.Find(id);
+            Data.Categories.Delete(category);
+            Data.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

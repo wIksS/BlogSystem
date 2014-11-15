@@ -13,5 +13,7 @@ namespace BlogSystem.Models
         public string Title { get; set; }
 
         public string Content { get; set; }
+
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

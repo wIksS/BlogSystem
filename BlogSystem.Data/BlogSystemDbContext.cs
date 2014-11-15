@@ -24,6 +24,10 @@ namespace BlogSystem.Data
 
         public IDbSet<Page> Pages { get; set; }
 
-       // public IDbSet<ApplicationUser> Users { get; set; }
+        public static BlogSystemDbContext Create()
+        {
+            return new BlogSystemDbContext();
+        }
+        // public IDbSet<ApplicationUser> Users { get; set; }
     }
 }

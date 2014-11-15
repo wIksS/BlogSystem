@@ -18,6 +18,8 @@ namespace BlogSystem.Models
 
         public string Title { get; set; }
 
+        public ApplicationUser ApplicationUser { get; set; }
+
         public ICollection<BlogPost> BlogPosts
         {
             get { return this.posts; }

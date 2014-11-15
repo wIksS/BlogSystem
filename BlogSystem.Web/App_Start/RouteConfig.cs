@@ -15,15 +15,22 @@ namespace BlogSystem.Web
 
             routes.MapRoute(
                 name: "Page",
-                url: "Page/{user}/{pageTitle}",
-                defaults: new { controller = "Pages", action = "Index", user = "v@g.c"},
+                url: "{user}/Page/{pageTitle}",
+                defaults: new {user="viktor",controller = "Pages", action = "Index"},
                 namespaces: new string[] { "BlogSystem.Web.Controllers" }
             );
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{user}/{id}",
-                defaults: new { controller = "Posts", action = "Index", user="v@g.c",id = UrlParameter.Optional },
+                url: "api/{controller}/{action}/{id}",
+                defaults: new { action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "BlogSystem.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "UserRoute",
+                url: "{user}/{controller}/{action}/{id}",
+                defaults: new { user="viktor",controller = "Posts", action = "Index",id = UrlParameter.Optional },
                 namespaces:new string[] {"BlogSystem.Web.Controllers"}
             );
         }

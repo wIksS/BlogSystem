@@ -136,3 +136,4 @@ C:\Users\Виктор\Desktop\BlogSystem\BlogSystem.Web\bin\System.Web.WebPages.
 C:\Users\Виктор\Desktop\BlogSystem\BlogSystem.Web\bin\WebActivatorEx.dll
 C:\Users\Виктор\Desktop\BlogSystem\BlogSystem.Web\bin\WebGrease.dll
 C:\Users\Виктор\Desktop\BlogSystem\BlogSystem.Web\bin\Newtonsoft.Json.xml
+C:\Users\Виктор\Desktop\BlogSystem\BlogSystem.Web\bin\Kendo.Mvc.dll

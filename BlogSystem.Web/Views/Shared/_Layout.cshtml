@@ -8,51 +8,92 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body class="home blog mp6 highlander-enabled highlander-light infinite-scroll neverending">
     <div id="wrapper">
-        <header class="col-md-offset-1 col-md-10 ">
-            <div class="menu-navigation">
-                <ul class="navigation">
-                    <li class="col-md-2 page">
-                        <a href="/" class="selected">
-                            Home
-                        </a>
-                    </li>
+        <div id="page">
+            <div class="menu-header">
+                <ul class="menu">
+                    <li class="menu-item current-menu-item"><a href="#">Home</a></li>
                     @Html.Action("ListPages", "Pages")
                 </ul>
             </div>
-        </header>
-        <div class="row">
-            <div class="red col-md-offset-1 col-md-10 row">
-                <aside class="col-md-4" id="sidebar">
-                    <!-- begin widgetized sidebar 1 -->
+            <div id="header" role="banner">
+                <h1><a href="http://viktordakov.wordpress.com/">Viktor Dakov</a></h1>
+
+                <div class="description">Programming blog</div>
+
+                <div class="rss">
+                    <a href="http://viktordakov.wordpress.com/feed/">Blog a lot</a>
+                </div>
+            </div>
+            <div id="blog-container">
+                <div id="sidebar" role="complementary">
                     <ul>
                         @Html.Action("ListCategories", "Categories")
-                        <li id="categories-3" class="widget row widget_categories">
-                            <div class="col-md-10">
-                                <h2 class="widgettitle">Categories</h2>
-                                <ul>
-                                    <li class="cat-item cat-item-122927714">
-                                        <a href="http://viktordakov.wordpress.com/category/c-part-1/" sl-processed="1">C# part 1</a>
-                                    </li>
-                                    <li class="cat-item cat-item-1">
-                                        <a href="http://viktordakov.wordpress.com/category/uncategorized/" sl-processed="1">Uncategorized</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
                     </ul>
-                    <!-- end widgetized sidebar 1 -->
-                </aside>
-                <section>
-                    <div class="col-md-8" id="content-wrapper">
+                </div>
+                <div id="content" role="main">
+                    <div id="content-inner" class="column">
                         @RenderBody()
+                    </div><!-- #content-inner -->
+
+                    <div id="nav-post">
+                        <div class="navigation-bott">
+                        </div>
                     </div>
-                </section>
+                </div><div id="footer" role="contentinfo">
+
+                </div><!-- #content -->
             </div>
         </div>
-
+        <div id="footer-bott">
+            <a href="https://wordpress.com/?ref=footer_blog" sl-processed="1">Blog at WordPress.com</a>. | <a href="https://wordpress.com/themes/greyzed/" title="Learn more about this theme" sl-processed="1">The Greyzed Theme</a>.
+        </div>
     </div>
+
+    @*<div id="wrapper">
+            <header class="col-md-offset-1 col-md-10 ">
+                <div class="menu-navigation">
+                    <ul class="navigation">
+                        <li class="col-md-2 page">
+                            <a href="/" class="selected">
+                                Home
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+            <div class="row">
+                <div class="red col-md-offset-1 col-md-10 row">
+                    <aside class="col-md-4" id="sidebar">
+                        <!-- begin widgetized sidebar 1 -->
+                        <ul>
+                            <li id="categories-3" class="widget row widget_categories">
+                                <div class="col-md-10">
+                                    <h2 class="widgettitle">Categories</h2>
+                                    <ul>
+                                        <li class="cat-item cat-item-122927714">
+                                            <a href="http://viktordakov.wordpress.com/category/c-part-1/" sl-processed="1">C# part 1</a>
+                                        </li>
+                                        <li class="cat-item cat-item-1">
+                                            <a href="http://viktordakov.wordpress.com/category/uncategorized/" sl-processed="1">Uncategorized</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- end widgetized sidebar 1 -->
+                    </aside>
+                    <section>
+                        <div class="col-md-8" id="content-wrapper">
+                            @RenderBody()
+                        </div>
+                    </section>
+                </div>
+            </div>
+                                    @RenderBody()
+
+        </div>*@
     @*<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -76,9 +117,9 @@
         <div id="wrapper">
             s
         </div>*@
-        <footer class="navbar-fixed-bottom">
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <footer class="navbar-fixed-bottom">
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

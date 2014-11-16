@@ -2,3 +2,14 @@
 <h1>@Model.Title</h1>
 <h2>@Html.Raw(@Model.Content)</h2>
 
+<div class="post type-post">
+<div class="posttitle">
+    <h2 class="pagetitle">
+        <a href="/@ViewBag.User/@Model.Title">@Model.Title</a>
+    </h2>
+</div>
+<div class="postcomments"><a href="http://viktordakov.wordpress.com/2014/05/20/falling-rocks-game-2/#respond" title="Comment on Falling Rocks Game" sl-processed="1">0</a></div>
+<div class="entry">
+    <p>@Html.Raw(@Model.Content)</p>
+</div>
+    </div>

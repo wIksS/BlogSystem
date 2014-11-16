@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using BlogSystem.Data;
-using BlogSystem.Models;
+﻿
 
 namespace BlogSystem.Web.Areas.Administration.Controllers
 {
-    public class PagesController : AdministrationController
+    using BlogSystem.Models;
+    using System.Collections;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using Model = BlogSystem.Models.Page;
+    using ViewModel = BlogSystem.Web.Areas.Administration.ViewModels.PageViewModel;
+    using Kendo.Mvc.UI;
+    using BlogSystem.Data;
+    using System.Web.Mvc;
+    using System.Linq;
+
+    public class PagesController : KendoGridAdministrationController
     {
         public PagesController(IBlogSystemData data)
             : base(data)
@@ -21,24 +23,63 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         // GET: Administration/Pages
         public ActionResult Index()
         {
-            return View(Data.Pages.All().ToList());
+            return View();
         }
 
-        // GET: Administration/Pages/Details/5
-        public ActionResult Details(int? id)
+        protected override IEnumerable GetData()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Page page = Data.Pages.Find(id);
-            if (page == null)
-            {
-                return HttpNotFound();
-            }
-            return View(page);
+            return this.Data
+                .Pages
+                .All()
+                .Where(p => p.ApplicationUser.UserName == User.Identity.Name)
+                .Project()
+                .To<ViewModel>();
         }
 
+        protected override T GetById<T>(object id)
+        {
+            return this.Data.Pages.Find(id) as T;
+        }
+
+        //[HttpPost]
+        //public ActionResult Create([DataSourceRequest]DataSourceRequest request, ViewModel model)
+        //{
+        //    var dbModel = base.Create<Model>(model);
+        //    if (dbModel != null) model.Id = dbModel.Id;
+
+        //    return this.GridOperation(model, request);
+        //}
+
+        [HttpPost]
+        public ActionResult Update([DataSourceRequest]DataSourceRequest request, ViewModel model)
+        {
+            //var dbModel = base.Create<Model>(model);
+            //if (dbModel != null) model.Id = dbModel.Id;
+            var page = Mapper.Map<Page>(model);
+            page.ApplicationUser = Data.Users.All().First(u => u.UserName == User.Identity.Name);
+            this.Data.Pages.Add(page);
+            this.Data.SaveChanges();
+            return this.GridOperation(model, request);
+            //base.Update<Model, ViewModel>(model, model.Id);
+
+            //return this.GridOperation(model, request);
+        }
+
+        [HttpPost]
+        public ActionResult Destroy([DataSourceRequest]DataSourceRequest request, ViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                var page = this.Data.Pages.Find(model.Id.Value);
+
+                this.Data.SaveChanges();
+
+                this.Data.Pages.Delete(page);
+                this.Data.SaveChanges();
+            }
+
+            return this.GridOperation(model, request);
+        }
         // GET: Administration/Pages/Create
         public ActionResult Create()
         {
@@ -62,62 +103,6 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
             }
 
             return View(page);
-        }
-
-        // GET: Administration/Pages/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Page page = Data.Pages.Find(id);
-            if (page == null)
-            {
-                return HttpNotFound();
-            }
-            return View(page);
-        }
-
-        // POST: Administration/Pages/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Content")] Page page)
-        {
-            if (ModelState.IsValid)
-            {
-                Data.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(page);
-        }
-
-        // GET: Administration/Pages/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Page page = Data.Pages.Find(id);
-            if (page == null)
-            {
-                return HttpNotFound();
-            }
-            return View(page);
-        }
-
-        // POST: Administration/Pages/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Page page = Data.Pages.Find(id);
-            Data.Pages.Delete(page);
-            Data.SaveChanges();
-            return RedirectToAction("Index");
         }
     }
 }

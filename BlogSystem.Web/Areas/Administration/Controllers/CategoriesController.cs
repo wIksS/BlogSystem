@@ -7,114 +7,82 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BlogSystem.Data;
-using BlogSystem.Models;
+
 
 namespace BlogSystem.Web.Areas.Administration.Controllers
 {
-    public class CategoriesController : AdministrationController
+    using BlogSystem.Models;
+    using System.Collections;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using Model = BlogSystem.Models.Category;
+    using ViewModel = BlogSystem.Web.Areas.Administration.ViewModels.CategoryViewModel;
+    using Kendo.Mvc.UI;
+
+    public class CategoriesController : KendoGridAdministrationController
     {
         public CategoriesController(IBlogSystemData data)
-            :base(data)
+            : base(data)
         { }
         // GET: Administration/Categories
         public ActionResult Index()
         {
-            return View(Data.Categories.All().ToList());
-        }
-
-        // GET: Administration/Categories/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = Data.Categories.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
-
-        // GET: Administration/Categories/Create
-        public ActionResult Create()
-        {
             return View();
         }
 
-        // POST: Administration/Categories/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        protected override IEnumerable GetData()
+        {
+            return this.Data
+                .Categories
+                .All()
+                 .Where(p => p.ApplicationUser.UserName == User.Identity.Name)
+                .Project()
+                .To<ViewModel>();
+        }
+
+        protected override T GetById<T>(object id)
+        {
+            return this.Data.Categories.Find(id) as T;
+        }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title")] Category category)
+        public ActionResult Create([DataSourceRequest]DataSourceRequest request, ViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                category.ApplicationUser = Data.Users.All().First(u => u.UserName == User.Identity.Name);
-                Data.Categories.Add(category);
-                Data.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            var dbModel = base.Create<Model>(model);
+            if (dbModel != null) model.Id = dbModel.Id;
 
-            return View(category);
+            return this.GridOperation(model, request);
         }
 
-        // GET: Administration/Categories/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = Data.Categories.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
-
-        // POST: Administration/Categories/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title")] Category category)
+        public ActionResult Update([DataSourceRequest]DataSourceRequest request, ViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                Data.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(category);
+            //var dbModel = base.Create<Model>(model);
+            //if (dbModel != null) model.Id = dbModel.Id;
+            var category = Mapper.Map<Category>(model);
+            category.ApplicationUser = Data.Users.All().First(u => u.UserName == User.Identity.Name);
+            this.Data.Categories.Add(category);
+            this.Data.SaveChanges();
+            return this.GridOperation(model, request);
+            //base.Update<Model, ViewModel>(model, model.Id);
+
+            //return this.GridOperation(model, request);
         }
 
-        // GET: Administration/Categories/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public ActionResult Destroy([DataSourceRequest]DataSourceRequest request, ViewModel model)
         {
-            if (id == null)
+            if (model != null && ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = Data.Categories.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
+                var category = this.Data.Categories.Find(model.Id.Value);
 
-        // POST: Administration/Categories/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Category category = Data.Categories.Find(id);
-            Data.Categories.Delete(category);
-            Data.SaveChanges();
-            return RedirectToAction("Index");
+                this.Data.SaveChanges();
+
+                this.Data.Categories.Delete(category);
+                this.Data.SaveChanges();
+            }
+
+            return this.GridOperation(model, request);
         }
     }
 }

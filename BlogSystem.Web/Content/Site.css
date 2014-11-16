@@ -1,9 +1,5 @@
 ﻿html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
     margin: 0;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
     padding: 0;
     border: 0;
     font-weight: inherit;
@@ -21,35 +17,79 @@ body {
     text-align: center;
     margin: 0 0 20px 0;
     padding: 0;
-    padding: 0px 25px;
-    background: #bcc5c1;
 }
 
-.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-11, .col-md-12 {
-    margin-left: -15px;
-    margin-right: -15px;
+h1, h1 a, h1 a:hover, h1 a:visited, #header .description {
+    text-decoration: none;
+    color: #000;
 }
+
+h1 {
+    display: block;
+    font-size: 2em;
+    -webkit-margin-before: 0.67em;
+    -webkit-margin-after: 0.67em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 4.8em;
+    font-family: impact;
+    text-transform: uppercase;
+    padding: 0 0 0 39px;
+}
+
+    h1, h1 a, h1 a:hover, h1 a:visited, #header .description {
+        text-decoration: none;
+        color: #000;
+    }
 
 #wrapper {
-    min-height: 1000px;
     background: url(images/background.jpg) top center no-repeat;
-    background-size: cover;
+    min-width: 1054px;
 }
 
-#administration-wrapper {
-    padding: 100px;
+.infinite-scroll #page {
+    position: relative;
+    padding-bottom: 20px;
 }
 
-header {
-    height: 40vh;
+#page {
+    margin: 0px auto;
+    padding: 0;
+    width: 1054px;
+    text-align: left;
 }
 
-    header ul {
+.menu-header {
+    margin-left: 80px;
+    position: absolute;
+    width: 900px;
+}
+
+    .menu-header ul {
         list-style: none;
         margin: 0;
     }
 
-    header a {
+    .menu-header li {
+        float: left;
+        position: relative;
+    }
+
+    .menu-header ul li.current_page_item > a, .menu-header ul li.current-menu-item > a {
+        background-color: #cc0000;
+        color: #fff;
+    }
+
+    .menu-header ul li.current_page_item > a, .menu-header ul li.current-menu-item > a {
+        background-color: #cc0000;
+        color: #fff;
+    }
+
+    .menu-header a {
         color: #fff;
         display: block;
         font-weight: bold;
@@ -59,57 +99,90 @@ header {
         text-decoration: none;
     }
 
-        header a.selected {
-            font-size: 1.8em;
-        }
-
-#content-wrapper {
-    text-align:left;
-    padding:30px 34px;
+a {
+    color: #cc0000;
+    text-decoration: none;
 }
 
-.red {
-    background: url(images/section-background.jpg)repeat-y;
-    background-size: 100% 100%;
-    /*padding-right: 7%;*/
+#header {
+    margin: 0px;
+    padding: 0;
+    height: 260px;
+    width: 1054px;
+    color: #000;
 }
+
+h1 {
+    padding-top: 115px;
+    margin: 0;
+}
+
+#header .description {
+    font-size: 1.4em;
+    padding: 0 0 0 39px;
+    font-weight: bold;
+}
+
+#header .rss {
+    font-size: 1.2em;
+    padding: 0 0 0 768px;
+    font-weight: bold;
+    text-transform: lowercase;
+}
+
+    #header .rss a {
+        color: #000;
+    }
+
+#blog-container {
+    width: 1054px;
+    background: url(images/container-bg.jpg) top center repeat-y;
+    margin: 0 auto;
+}
+
 
 #sidebar {
-    background: url(images/sidebar-background.jpg)no-repeat 0 0;
-    height: 500px;
-    padding: 75px 0 10px 28px;
-    background-size: 100% 100%;
+padding: 75px 0 10px 28px;
+    background: url(Images/sidebar-background.jpg) no-repeat 0 0;
+float: left;
+width: 275px;
+min-height: 613px;
+overflow: hidden;
+}
+#sidebar {
     font: 1.1em Tahoma, Arial, Sans-Serif;
     color: #fff;
-    text-align: left;
 }
 
-    #sidebar a {
-        color: white;
+    #sidebar ul, #sidebar ul ol {
+        margin: 0;
+        padding: 0;
     }
 
-    #sidebar ul li {
-        list-style-type: none;
-        list-style-image: none;
-        margin-bottom: 18px;
-    }
+        #sidebar ul li {
+            list-style-type: none;
+            list-style-image: none;
+            margin-bottom: 18px;
+        }
 
     #sidebar h2 {
         margin: 5px 0 0;
-        width: 100%;
         line-height: 32px;
         font-size: 12px;
         text-transform: uppercase;
         padding: 2px 0 0 47px;
         background: url(images/sidebar-category.jpg) top left no-repeat;
-        background-size: 100%;
         color: #eef0eb;
         font-family: Tahoma, Verdana, Sans-Serif;
         font-size: 1.2em;
         font-weight: bold;
     }
 
-    #sidebar ul ol, #sidebar ul ul {
+    #sidebar h2, #wp-calendar caption, cite {
+        text-decoration: none;
+    }
+
+    #sidebar ul ul, #sidebar ul ol {
         margin: 5px 0 0 20px;
     }
 
@@ -124,35 +197,43 @@ header {
             margin: 5px 20px 10px 0;
         }
 
-#content-wrapper {
+        #sidebar ul ul li, #sidebar ul ol li {
+            margin: 3px 0 0;
+            padding: 0;
+        }
+
+        #sidebar ul li {
+            list-style-type: none;
+            list-style-image: none;
+            margin-bottom: 18px;
+        }
+
+    #sidebar a {
+        color: #fff;
+    }
+
+#content {
+    width: 751px;
+    float: left;
     background: url(images/content-background.jpg) top center no-repeat;
-    height: 500px;
-    background-size: 100% 100%;
-    width: 56vw;
-}
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+.infinite-scroll #content-inner {
+    padding-bottom: 50px;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.column {
+    padding: 30px 0 20px 34px;
+    margin: 0px 0 0;
+    width: 648px;
+    min-height: 613px;
 }
 
+.post {
+    margin: 0px;
+}
 
-
-.post-title {
+.posttitle {
     width: 537px;
     float: left;
     margin-top: 20px;
@@ -160,37 +241,9 @@ textarea {
     background: url(images/arrow.gif) top left no-repeat;
 }
 
-h2.page-title {
+h2.pagetitle {
     margin-top: 0px;
     width: 512px;
-}
-
-h2, h2 a, h2 a:visited, h3, h3 a, h3 a:visited {
-    font-family: impact, Verdana, Arial, Sans-Serif;
-    color: #cc0000;
-    text-decoration: none;
-}
-
-    h2, h2 a, h2 a:visited, h3, h3 a, h3 a:visited {
-        font-family: impact, Verdana, Arial, Sans-Serif;
-        color: #cc0000;
-        text-decoration: none;
-    }
-
-a {
-    color: #cc0000;
-    text-decoration: none;
-}
-
-small a {
-    color: #747775;
-    font-weight: bold;
-}
-
-h2, h2 a, h2 a:visited, h3, h3 a, h3 a:visited {
-    font-family: impact, Verdana, Arial, Sans-Serif;
-    color: #cc0000;
-    text-decoration: none;
 }
 
 h2 {
@@ -200,58 +253,92 @@ h2 {
     padding-bottom: 9px;
 }
 
-.mark-it-up .markItUpButton1 a {
-	background:url(images/h1.png); 
-}
-.mark-it-up .markItUpButton2 a {
-	background:url(images/h2.png); 
-}
-.mark-it-up .markItUpButton3 a {
-	background:url(images/h3.png); 
-}
-.mark-it-up .markItUpButton4 a {
-	background:url(images/h4.png); 
-}
-.mark-it-up .markItUpButton5 a {
-	background:url(images/h5.png); 
-}
-.mark-it-up .markItUpButton6 a {
-	background:url(images/h6.png); 
-}
-.mark-it-up .markItUpButton7 a {
-	background:url(images/paragraph.png); 
+small, .nocomments, blockquote, strike {
+    color: #747775;
 }
 
-.html .markItUpButton8 a {
-	background:url(images/bold.png);
-}
-.html .markItUpButton9 a {
-	background-image:url(images/italic.png);
-}
-.html .markItUpButton10 a {
-	background-image:url(images/stroke.png);
+    small a {
+        color: #747775;
+        font-weight: bold;
+    }
+
+small {
+    font-family: Tahoma, Arial, Helvetica, Sans-Serif;
+    font-size: 1.1em;
+    line-height: 1.6em;
+    padding-bottom: 1.4em;
 }
 
-.html .markItUpButton11 a {
-	background-image:url(images/list-bullet.png);
-}
-.html .markItUpButton12 a {
-	background-image:url(images/list-numeric.png);
-}
-.html .markItUpButton13 a {
-	background-image:url(images/list-item.png);
-}
-
-.html .markItUpButton14 a {
-	background-image:url(images/picture.png); 
-}
-.html .markItUpButton15 a {
-	background-image:url(images/link.png);
+.postcomments {
+    width: 65px;
+    height: 40px;
+    background: url(images/bubble.gif) top left no-repeat;
+    float: left;
+    padding-top: 8px;
+    margin: 20px 0 0;
+    text-align: center;
+    font-size: 1.17em;
 }
 
-.html .markItUpButton16 a {
-	background-image:url(images/clean.png);
+    .postcomments a {
+        font-weight: bold;
+        color: #cc0000;
+        font-size: 1.17em;
+    }
+
+.column .entry {
+    clear: left;
+    line-height: 1.4em;
+    font-size: 1.2em;
+    line-height: 1.8em;
+    padding-bottom: 10px;
 }
-.html .preview a {
-	background-image:url(images/preview.png);
+
+    .column .entry p {
+        margin-bottom: 1.8em;
+    }
+    #footer-bott {
+padding: 15px 0 0 0;
+margin: 0 auto;
+min-width: 1054px;
+height: 295px;
+background: #bcc5c1 url(images/footerbar.jpg) top center no-repeat;
+clear: both;
+color: #fff;
+font-size: 1.1em;
+text-align: center;
+}#footer {
+padding: 30px 0;
+margin: 0 auto;
+overflow: hidden;
+width: 100%;
+min-height: 15px;
+background: #bcc5c1 url(images/bottom.jpg) top center no-repeat;
+clear: both;
 }
+.reset,.reset div,.reset dl,.reset dt,.reset dd,.reset ul,.reset ol,.reset li,.reset h1,.reset h2,.reset h3,.reset h4,.reset h5,.reset h6,.reset pre,.reset form,.reset fieldset,.reset input,.reset textarea,.reset p,.reset blockquote,.reset th,.reset td
+{margin:0;padding:0;}
+
+.reset table
+{border-collapse:collapse;border-spacing:0;}
+
+.reset fieldset,.reset img
+{border:0;}
+
+.reset address,.reset caption,.reset cite,.reset code,.reset dfn,.reset em,.reset strong,.reset th,.reset var
+{font-style:normal;font-weight:normal;}
+
+.reset ol,.reset ul
+{list-style:none;}
+
+.reset caption,.reset th
+{text-align:left;}
+
+.reset h1,.reset h2,.reset h3,.reset h4,.reset h5,.reset h6
+{font-size:100%;font-weight:normal;}
+
+.reset q:before,.reset q:after
+{content:'';}
+
+.reset abbr,.reset acronym
+{border:0;}

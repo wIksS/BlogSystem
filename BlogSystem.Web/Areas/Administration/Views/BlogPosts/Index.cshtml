@@ -1,51 +1,32 @@
-﻿@model IEnumerable<BlogSystem.Models.BlogPost>
+﻿@using BlogSystem.Web.Areas.Administration.ViewModels;
 
 @{
-    ViewBag.Title = "Index";
+    const string ControllerName = "BlogPosts";
+    ViewBag.Title = ControllerName;
 }
+<h2>@ViewBag.Title</h2>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplicationUserId)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationUserId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+@(Html.Kendo().Grid<PageViewModel>()
+    .Name("grid")
+    .Columns(cols =>
+                    {
+                        cols.AutoGenerate(true);
+                        cols.Command(c => c.Edit());
+                        cols.Command(c => c.Destroy());
+                    })
+    .ColumnMenu()
+    .Pageable(page => page.Refresh(true))
+    .Sortable()
+    .Groupable()
+    .Filterable()
+    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                    .ToolBar(toolbar =>
+                    {
+                        toolbar.Custom().Action("Create", "BlogPosts", new { area = "Administration" }).Name("custom-toolbar-create-product-button").Text("Create post");
+                    }).DataSource(data => data
+    .Ajax()
+    .Model(m => m.Id(x => x.Id))
+        .Read(read => read.Action("Read", "BlogPosts"))
+        .Update(update => update.Action("Update", "BlogPosts"))
+        .Destroy(destroy => destroy.Action("Destroy", "BlogPosts"))
+    ))
